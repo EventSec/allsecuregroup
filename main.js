@@ -44,12 +44,32 @@
     el.appendChild(document.createTextNode(text));
   }
 
+  // Reassemble the contact email at runtime from its parts so the full address
+  // never appears as a single contiguous string in the delivered markup. This
+  // deters naive regex scrapers; it is not a substitute for a spam filter.
+  function assembleEmail(c) {
+    var raw = c && c.contact && c.contact.email;
+    if (typeof raw !== "string" || !raw) return;
+    var at = raw.lastIndexOf("@");
+    if (at < 1) return;
+    var local = raw.slice(0, at);
+    var domain = raw.slice(at + 1);
+    var el = document.getElementById("contact-email");
+    if (!el) return;
+    var full = local + "@" + domain;
+    el.textContent = full;
+    el.setAttribute("href", "mai" + "lto:" + local + "@" + domain);
+    el.removeAttribute("target");
+  }
+
   function applyContent(c) {
     // Simple text fields
     document.querySelectorAll("[data-edit]").forEach(function (el) {
       var v = getVal(c, el.getAttribute("data-edit"));
       if (typeof v === "string" && v.length) el.textContent = v;
     });
+
+    assembleEmail(c);
 
     // Multiline headings (Arrays of lines joined by <br>)
     document.querySelectorAll("[data-edit-multiline]").forEach(function (el) {
