@@ -142,6 +142,7 @@ a { color: inherit; }
 .txt-contact-note { font-family: "Areal Regular", sans-serif; font-weight: 400; font-size: 17px; line-height: 1.5em; color: var(--muted); }
 .txt-contact-location { font-family: "League Spartan", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; line-height: 1em; color: var(--white); text-align: right; }
 .txt-contact-email { font-family: "Areal Regular", sans-serif; font-weight: 400; font-size: 18px; line-height: 1.2em; color: var(--muted); text-align: right; }
+.txt-contact-email-link { color: inherit; text-decoration: none; }
 
 /* ---------- Opening section ---------- */
 .section-opening {
