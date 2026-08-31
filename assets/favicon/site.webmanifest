@@ -1,0 +1,21 @@
+{
+  "name": "All Secure Group",
+  "short_name": "All Secure",
+  "icons": [
+    {
+      "src": "web-app-manifest-192x192.png?v=20260831",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "web-app-manifest-512x512.png?v=20260831",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#642667",
+  "background_color": "#000000",
+  "display": "standalone"
+}
