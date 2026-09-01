@@ -439,7 +439,7 @@ a { color: inherit; }
   .signal-card { min-height: 300px; padding: 22px; }
   .section-model { gap: 32px; padding: 56px 20px; }
   .model-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .model-title, .model-note { flex: none; width: 100%; }
+  .model-title, .model-note, .gallery-title { flex: none; width: 100%; }
   .caps-grid { display: flex; flex-flow: column; align-items: flex-start; gap: 12px; }
   .cap-card { gap: 28px; height: min-content; }
   .section-gallery { gap: 28px; padding: 56px 20px; }
