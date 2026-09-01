@@ -10,8 +10,8 @@
 
   var DEFAULTS = {
     nav: { location: "BANGKOK, THAILAND", contactLabel: "CONTACT US", contactHref: "#contact" },
-    logo: { src: "assets/9exs6MbUys3znOG6NQgxVSiV6mM.png", alt: "Event Sec logo", href: "#" },
-    hero: { kicker: "EVENT SECURITY CONSULTANCY", title: "PROACTIVE SECURITY.", statement: "Command-ready safety planning and live operational support for Thailand's largest public gatherings." },
+    logo: { src: "assets/9exs6MbUys3znOG6NQgxVSiV6mM.png", alt: "Allsec logo", href: "#" },
+    hero: { kicker: "EVENT SAFETY CONSULTANCY", title: "PROACTIVE SECURITY.", statement: "Command-ready safety planning and live operational support for Thailand's largest public gatherings." },
     scaleSignal: { stat: "400,000+", label: "ATTENDEES, AN UNBLEMISHED RECORD.", note: "Built around the realities of mass participation: venue complexity, multiple agencies, high-value guests and live incident response." },
     operatingModel: { titleLine1: "SAFE CROWDS,", titleLine2: "SEAMLESS EVENTS.", note: "A focused consultancy for the moments with no margin for error.", capabilities: [
       { icon: "assets/icons/plan.svg", title: "ADVANCE PLANNING", description: "Threat assessment, crowd-flow review, command protocols." },
