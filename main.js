@@ -120,6 +120,30 @@
       if (typeof v === "string" && v) el.setAttribute("href", v);
     });
 
+    // Section spacing overrides (CSS custom properties on <html>)
+    var SPACING_MAP = {
+      openingPaddingTop: "--opening-padding-top",
+      openingGap: "--opening-gap",
+      heroGridGap: "--hero-grid-gap",
+      modelPaddingTop: "--model-padding-top",
+      modelGap: "--model-gap",
+      capsGridGap: "--caps-grid-gap",
+      galleryPaddingTop: "--gallery-padding-top",
+      galleryGap: "--gallery-gap",
+      contactPaddingTop: "--contact-padding-top"
+    };
+    if (c.spacing) {
+      var root = document.documentElement;
+      Object.keys(SPACING_MAP).forEach(function (key) {
+        var val = c.spacing && c.spacing[key];
+        if (typeof val === "string" && val.trim() !== "") {
+          root.style.setProperty(SPACING_MAP[key], /^\d+(\.\d+)?$/.test(val) ? val + "px" : val);
+        } else {
+          root.style.removeProperty(SPACING_MAP[key]);
+        }
+      });
+    }
+
     // Capabilities
     var caps = c.operatingModel && c.operatingModel.capabilities;
     var capsEl = document.getElementById("capabilities");
