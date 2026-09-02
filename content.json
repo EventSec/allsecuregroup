@@ -49,7 +49,7 @@
   "gallery": {
     "titleLine1": "RECENT",
     "titleLine2": "OPS.",
-    "note": "A record of the environments we help keep ready.",
+    "note": "Delivered with discretion, readiness, and control — a record of recent events and complex operating environments.",
     "slides": [
       {
         "label": "IMG 20260322_143655_904",
@@ -77,16 +77,6 @@
         "width": 351
       },
       {
-        "label": "Wf24",
-        "src": "assets/yCtJNEDXvgttNEgd6tblX1Vn4.png",
-        "width": 872
-      },
-      {
-        "label": "WhatsApp Image 2026-03-19 at 9.28.27 AM",
-        "src": "assets/nOiBYW74uqLytAoFCFwn40gyk8.jpeg",
-        "width": 540
-      },
-      {
         "label": "Hkt-redact",
         "src": "assets/imCgZ5mA0dkm0GiT8681nrE8y8w.png",
         "width": 800
@@ -104,5 +94,16 @@
   },
   "footer": {
     "copyright": "© All Secure Group Co., Ltd. 2026"
+  },
+  "spacing": {
+    "openingPaddingTop": "",
+    "openingGap": "",
+    "heroGridGap": "",
+    "modelPaddingTop": "",
+    "modelGap": "",
+    "capsGridGap": "",
+    "galleryPaddingTop": "36",
+    "galleryGap": "0",
+    "contactPaddingTop": ""
   }
 }
