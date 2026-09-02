@@ -13,6 +13,17 @@
 
   --overflow-clip: clip;
 
+  /* Section spacing overrides (set by the editor / content.json; fall back to defaults) */
+  --opening-gap: 72px;
+  --opening-padding-top: 28px;
+  --hero-grid-gap: 48px;
+  --model-gap: 40px;
+  --model-padding-top: 80px;
+  --caps-grid-gap: 16px;
+  --gallery-gap: 32px;
+  --gallery-padding-top: 80px;
+  --contact-padding-top: 80px;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -151,8 +162,8 @@ a { color: inherit; }
   display: flex;
   flex-flow: column;
   align-items: center;
-  gap: 72px;
-  padding: 28px 56px 104px;
+  gap: var(--opening-gap);
+  padding: var(--opening-padding-top) 56px 104px;
   overflow: var(--overflow-clip);
 }
 
@@ -171,7 +182,7 @@ a { color: inherit; }
 .hero-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(380px, 1fr));
-  gap: 48px;
+  gap: var(--hero-grid-gap);
   width: 100%;
 }
 .hero-copy {
@@ -247,8 +258,8 @@ a { color: inherit; }
   display: flex;
   flex-flow: column;
   align-items: flex-start;
-  gap: 40px;
-  padding: 80px 56px;
+  gap: var(--model-gap);
+  padding: var(--model-padding-top) 56px;
   overflow: var(--overflow-clip);
 }
 .model-header {
@@ -265,7 +276,7 @@ a { color: inherit; }
   display: grid;
   grid-template-columns: repeat(3, minmax(240px, 1fr));
   grid-auto-rows: minmax(0, 1fr);
-  gap: 16px;
+  gap: var(--caps-grid-gap);
   width: 100%;
 }
 .cap-card {
@@ -295,8 +306,8 @@ a { color: inherit; }
   display: flex;
   flex-flow: column;
   align-items: flex-start;
-  gap: 32px;
-  padding: 80px 56px;
+  gap: var(--gallery-gap);
+  padding: var(--gallery-padding-top) 56px;
   overflow: var(--overflow-clip);
 }
 .gallery-header {
@@ -381,7 +392,7 @@ a { color: inherit; }
   align-items: flex-end;
   justify-content: space-between;
   gap: 0;
-  padding: 80px 56px;
+  padding: var(--contact-padding-top) 56px;
   overflow: var(--overflow-clip);
 }
 .contact-copy {
@@ -424,28 +435,28 @@ a { color: inherit; }
 @media (min-width: 810px) and (max-width: 1199.98px) {
   .page { align-items: flex-start; overflow: visible; }
   .content, .section-opening, .section-model, .section-gallery, .section-contact { max-width: 100%; }
-  .section-opening { gap: 56px; padding: 28px 36px 80px; }
-  .hero-grid { grid-template-columns: repeat(2, minmax(330px, 1fr)); gap: 32px; }
-  .section-model, .section-gallery, .section-contact { padding: 64px 36px; }
-  .caps-grid { grid-template-columns: repeat(3, minmax(190px, 1fr)); gap: 12px; }
+  .section-opening { gap: 56px; padding: var(--opening-padding-top) 36px 80px; }
+  .hero-grid { grid-template-columns: repeat(2, minmax(330px, 1fr)); gap: var(--hero-grid-gap); }
+  .section-model, .section-gallery, .section-contact { padding: var(--model-padding-top) 36px; }
+  .caps-grid { grid-template-columns: repeat(3, minmax(190px, 1fr)); gap: var(--caps-grid-gap); }
 }
 
 @media (max-width: 809.98px) {
   .content, .section-opening, .section-model, .section-gallery, .section-contact { max-width: 100%; }
   .page { align-items: flex-start; overflow: visible; }
-  .section-opening { gap: 44px; padding: 24px 20px 64px; }
+  .section-opening { gap: var(--opening-gap); padding: var(--opening-padding-top) 20px 64px; }
   .nav .logo { width: 104px; }
-  .hero-grid { display: flex; flex-flow: column; align-items: flex-start; gap: 28px; }
+  .hero-grid { display: flex; flex-flow: column; align-items: flex-start; gap: var(--hero-grid-gap); }
   .signal-card { min-height: 300px; padding: 22px; }
-  .section-model { gap: 32px; padding: 56px 20px; }
+  .section-model { gap: var(--model-gap); padding: var(--model-padding-top) 20px; }
   .model-header { flex-direction: column; align-items: flex-start; gap: 20px; }
   .model-title, .model-note, .gallery-title { flex: none; width: 100%; }
-  .caps-grid { display: flex; flex-flow: column; align-items: flex-start; gap: 12px; }
+  .caps-grid { display: flex; flex-flow: column; align-items: flex-start; gap: var(--caps-grid-gap); }
   .cap-card { gap: 28px; height: min-content; }
-  .section-gallery { gap: 28px; padding: 56px 20px; }
+  .section-gallery { gap: var(--gallery-gap); padding: var(--gallery-padding-top) 20px; }
   .gallery-header { flex-direction: column; align-items: flex-start; gap: 18px; }
   .gallery-note { width: 100%; }
-  .section-contact { flex-direction: column; align-items: flex-start; gap: 36px; padding: 56px 20px; }
+  .section-contact { flex-direction: column; align-items: flex-start; gap: 36px; padding: var(--contact-padding-top) 20px; }
   .contact-detail { align-items: flex-start; width: 100%; }
   .contact-copy { flex: none; width: 100%; }
   .txt-hero { font-size: 60px; }
