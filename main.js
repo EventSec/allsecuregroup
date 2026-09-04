@@ -187,6 +187,77 @@
       });
       initCarousel(track);
     }
+
+    // Custom sections
+    applyCustomSections(c);
+  }
+
+  /* ---------- Custom sections ---------- */
+  var POS_MAP = {
+    afterHero: ".section-opening",
+    afterModel: ".section-model",
+    afterGallery: ".section-gallery"
+  };
+
+  function applyCustomSections(c) {
+    // Remove any previously injected custom sections
+    document.querySelectorAll(".section-custom").forEach(function (el) { el.remove(); });
+
+    var secs = c.customSections;
+    if (!secs || !Array.isArray(secs) || !secs.length) return;
+
+    // Group by position, preserving order within each group
+    var groups = {};
+    secs.forEach(function (sec) {
+      var pos = sec.position || "afterHero";
+      if (!groups[pos]) groups[pos] = [];
+      groups[pos].push(sec);
+    });
+
+    Object.keys(groups).forEach(function (pos) {
+      var anchor = document.querySelector(POS_MAP[pos]);
+      if (!anchor) return;
+      var ref = anchor; // insert after this element
+      groups[pos].forEach(function (sec) {
+        var section = document.createElement("section");
+        section.className = "section-custom";
+        section.setAttribute("aria-label", "Custom section");
+
+        var inner = document.createElement("div");
+        inner.className = "custom-inner";
+
+        if (sec.image) {
+          var imgWrap = document.createElement("div");
+          imgWrap.className = "custom-img";
+          var img = document.createElement("img");
+          img.src = sec.image;
+          img.alt = sec.heading || "";
+          if (sec.imageWidth) img.style.width = sec.imageWidth + "px";
+          imgWrap.appendChild(img);
+          inner.appendChild(imgWrap);
+        }
+
+        var textWrap = document.createElement("div");
+        textWrap.className = "custom-text";
+        if (sec.heading) {
+          var h = document.createElement("h2");
+          h.className = "txt-h2 custom-heading";
+          h.textContent = sec.heading;
+          textWrap.appendChild(h);
+        }
+        if (sec.body) {
+          var p = document.createElement("p");
+          p.className = "custom-body";
+          p.textContent = sec.body;
+          textWrap.appendChild(p);
+        }
+        inner.appendChild(textWrap);
+
+        section.appendChild(inner);
+        ref.parentNode.insertBefore(section, ref.nextSibling);
+        ref = section; // next section in same group goes after this one
+      });
+    });
   }
 
   /* ---------- Carousel scroll control ---------- */
