@@ -370,6 +370,7 @@
   // Live-preview hook: the admin editor posts edited content here so the
   // preview iframe updates in real time without needing a server.
   window.addEventListener("message", function (ev) {
+    if (ev.origin !== window.location.origin) return;
     var msg = ev.data;
     if (msg && msg.type === "allsecure-apply") {
       var merged = JSON.parse(JSON.stringify(DEFAULTS));
