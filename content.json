@@ -80,6 +80,31 @@
         "label": "Hkt-redact",
         "src": "assets/imCgZ5mA0dkm0GiT8681nrE8y8w.png",
         "width": 800
+      },
+      {
+        "label": "brief-redact",
+        "src": "assets/uploads/preeventredact1-44777.png",
+        "width": 480
+      },
+      {
+        "label": "AP-redact",
+        "src": "assets/uploads/event1redact-4658.png",
+        "width": 480
+      },
+      {
+        "label": "bkk-event-redact",
+        "src": "assets/uploads/event2redact-15474.png",
+        "width": 480
+      },
+      {
+        "label": "CL-redact",
+        "src": "assets/uploads/event3redact-33935.png",
+        "width": 480
+      },
+      {
+        "label": "",
+        "src": "assets/uploads/Rescue1-60410.jpeg",
+        "width": 480
       }
     ]
   },
@@ -95,6 +120,32 @@
   "footer": {
     "copyright": "© All Secure Group Co., Ltd. 2026"
   },
+  "customSections": [
+    {
+      "heading": "WF25",
+      "body": "Provided comprehensive safety and security planning and operations for a five-day event with 100k+ attendees — from emergency response planning and live coordination with government agencies, to personnel oversight, security policy and screening protocols.",
+      "image": "assets/uploads/wf25Ranger-23905.jpeg",
+      "position": "afterGallery"
+    },
+    {
+      "heading": "Miss Universe '25",
+      "body": "Provided close-protection for international contestants and VIPs for the annual global event.",
+      "image": "assets/uploads/missU2025-91567.jpeg",
+      "position": "afterGallery"
+    },
+    {
+      "heading": "Circo Loco '26",
+      "body": "Provided comprehensive security solutions, working with an international team of over 100 security staff, and local police, for 30k attendees from around the world.",
+      "image": "assets/uploads/preeventredact1-88034.png",
+      "position": "afterGallery"
+    },
+    {
+      "heading": "Bodyguards/CPOs",
+      "body": "We provide Close Protection Officers for a distinguished national and international clientele.",
+      "image": "assets/uploads/CPOvan-78429.png",
+      "position": "afterGallery"
+    }
+  ],
   "spacing": {
     "openingPaddingTop": "",
     "openingGap": "",

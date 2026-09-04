@@ -382,6 +382,49 @@ a { color: inherit; }
 .carousel-btn img { width: 100%; height: 100%; pointer-events: none; }
 .carousel-btn.prev { opacity: 0; pointer-events: none; }
 
+/* ---------- Custom sections ---------- */
+.section-custom {
+  max-width: 1200px;
+  width: 100%;
+  border-top: 1px solid #ffffff24;
+  padding: 80px 56px;
+  overflow: var(--overflow-clip);
+}
+.custom-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+}
+.custom-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+.custom-text {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.custom-heading {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 800;
+  font-size: 54px;
+  letter-spacing: -0.04em;
+  line-height: 0.92em;
+  color: var(--white);
+}
+.custom-body {
+  font-family: "Areal Regular", sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55em;
+  color: var(--muted);
+}
+
 /* ---------- Contact section ---------- */
 .section-contact {
   max-width: 1200px;
@@ -438,6 +481,7 @@ a { color: inherit; }
   .section-opening { gap: 56px; padding: var(--opening-padding-top) 36px 80px; }
   .hero-grid { grid-template-columns: repeat(2, minmax(330px, 1fr)); gap: var(--hero-grid-gap); }
   .section-model, .section-gallery, .section-contact { padding: var(--model-padding-top) 36px; }
+  .section-custom { padding: 60px 36px; }
   .caps-grid { grid-template-columns: repeat(3, minmax(190px, 1fr)); gap: var(--caps-grid-gap); }
 }
 
@@ -457,9 +501,12 @@ a { color: inherit; }
   .gallery-header { flex-direction: column; align-items: flex-start; gap: 18px; }
   .gallery-note { width: 100%; }
   .section-contact { flex-direction: column; align-items: flex-start; gap: 36px; padding: var(--contact-padding-top) 20px; }
+  .section-custom { padding: 48px 20px; }
+  .custom-inner { grid-template-columns: 1fr; gap: 28px; }
   .contact-detail { align-items: flex-start; width: 100%; }
   .contact-copy { flex: none; width: 100%; }
   .txt-hero { font-size: 60px; }
   .txt-stat { font-size: 54px; }
   .txt-h2 { font-size: 40px; }
+  .custom-heading { font-size: 40px; }
 }
