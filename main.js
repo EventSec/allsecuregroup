@@ -113,11 +113,11 @@
       }
     });
 
-    // Link hrefs
+    // Link hrefs (allowlist schemes to block javascript:/data: XSS via content.json)
     document.querySelectorAll("[data-key]").forEach(function (el) {
       if (el.hasAttribute("data-edit-img")) return;
       var v = getVal(c, el.getAttribute("data-key"));
-      if (typeof v === "string" && v) el.setAttribute("href", v);
+      if (typeof v === "string" && /^(#|\/|https?:\/\/|mailto:)/.test(v)) el.setAttribute("href", v);
     });
 
     // Section spacing overrides (CSS custom properties on <html>)
