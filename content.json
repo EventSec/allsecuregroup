@@ -125,25 +125,29 @@
       "heading": "WF25",
       "body": "Provided comprehensive safety and security planning and operations for a five-day event with 100k+ attendees — from emergency response planning and live coordination with government agencies, to personnel oversight, security policy and screening protocols.",
       "image": "assets/uploads/wf25Ranger-23905.jpeg",
-      "position": "afterGallery"
+      "position": "afterGallery",
+      "imageWidth": 0
     },
     {
-      "heading": "Miss Universe '25",
+      "heading": "MISS UNIVERSE '25",
       "body": "Provided close-protection for international contestants and VIPs for the annual global event.",
       "image": "assets/uploads/missU2025-91567.jpeg",
-      "position": "afterGallery"
+      "position": "afterGallery",
+      "imageWidth": 0
     },
     {
-      "heading": "Circo Loco '26",
+      "heading": "CIRCO LOCO '26",
       "body": "Provided comprehensive security solutions, working with an international team of over 100 security staff, and local police, for 30k attendees from around the world.",
       "image": "assets/uploads/preeventredact1-88034.png",
-      "position": "afterGallery"
+      "position": "afterGallery",
+      "imageWidth": 0
     },
     {
-      "heading": "Bodyguards/CPOs",
+      "heading": "BODYGUARDS/CPOs",
       "body": "We provide Close Protection Officers for a distinguished national and international clientele.",
       "image": "assets/uploads/CPOvan-78429.png",
-      "position": "afterGallery"
+      "position": "afterGallery",
+      "imageWidth": 0
     }
   ],
   "spacing": {
