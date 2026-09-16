@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Allsec — Safety & Security Consulting",
+    "title": "All Secure Group | Safety for Your Stage",
     "description": "Bangkok safety and security consulting for large-scale events of 10,000+ attendees.",
     "url": "https://allsecure.group/"
   },
@@ -11,7 +11,7 @@
   },
   "logo": {
     "src": "assets/9exs6MbUys3znOG6NQgxVSiV6mM.png",
-    "alt": "Allsec logo",
+    "alt": "All Secure Group logo",
     "href": "#"
   },
   "hero": {
@@ -119,6 +119,11 @@
   },
   "footer": {
     "copyright": "© All Secure Group Co., Ltd. 2026"
+  },
+  "redirects": {
+    "go": {
+      "target": "/#contact"
+    }
   },
   "customSections": [
     {

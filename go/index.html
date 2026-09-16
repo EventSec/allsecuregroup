@@ -6,10 +6,99 @@
   <title>All Secure Group — Redirecting…</title>
   <link rel="canonical" href="https://allsecure.group/#contact">
   <meta name="robots" content="noindex">
-  <meta http-equiv="refresh" content="0; url=https://allsecure.group/#contact">
-  <script>location.replace("https://allsecure.group/#contact");</script>
+  <script>
+  (function () {
+    "use strict";
+    // Stable QR target: print https://allsecure.group/go/ once,
+    // change redirects.go.target in content.json to move it.
+    // Allowlist: same-site paths + https wa.me / api.whatsapp.com only.
+    var DEFAULT_TARGET = "/#contact";
+    var FETCH_TIMEOUT_MS = 2500;
+    var FALLBACK_DELAY_MS = 3000;
+
+    function isAllowedTarget(raw) {
+      if (typeof raw !== "string") return false;
+      var t = raw.trim();
+      if (!t || /\s/.test(t)) return false;
+      // Same-site relative (but not protocol-relative //evil).
+      if (t.charAt(0) === "#") return true;
+      if (t.charAt(0) === "/" && t.charAt(1) !== "/") return true;
+      var u;
+      try {
+        u = new URL(t, window.location.origin);
+      } catch (e) {
+        return false;
+      }
+      if (u.protocol !== "https:") return false;
+      var host = u.hostname.toLowerCase();
+      if (host === "allsecure.group" || host === "www.allsecure.group") return true;
+      if (host === "wa.me" || host === "api.whatsapp.com") return true;
+      return false;
+    }
+
+    function resolveTarget(raw) {
+      try {
+        return new URL(raw.trim(), window.location.origin).href;
+      } catch (e) {
+        return new URL(DEFAULT_TARGET, window.location.origin).href;
+      }
+    }
+
+    function go(href) {
+      var link = document.getElementById("go-link");
+      if (link) link.setAttribute("href", href);
+      window.location.replace(href);
+    }
+
+    function fallback() {
+      go(resolveTarget(DEFAULT_TARGET));
+    }
+
+    var done = false;
+    function once(fn) {
+      return function (arg) {
+        if (done) return;
+        done = true;
+        fn(arg);
+      };
+    }
+    var succeed = once(go);
+    var fail = once(fallback);
+
+    // Safety net if fetch hangs (offline, slow CDN).
+    setTimeout(fail, FALLBACK_DELAY_MS);
+
+    var controller = null;
+    try {
+      if (typeof AbortController !== "undefined") {
+        controller = new AbortController();
+        setTimeout(function () {
+          try { controller.abort(); } catch (e) {}
+        }, FETCH_TIMEOUT_MS);
+      }
+      fetch("/content.json", {
+        cache: "default",
+        signal: controller ? controller.signal : undefined
+      })
+        .then(function (r) {
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          return r.json();
+        })
+        .then(function (data) {
+          var target =
+            data && data.redirects && data.redirects.go && data.redirects.go.target;
+          if (isAllowedTarget(target)) succeed(resolveTarget(target));
+          else fail();
+        })
+        .catch(fail);
+    } catch (e) {
+      fail();
+    }
+  })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=https://allsecure.group/#contact"></noscript>
 </head>
 <body>
-  <p>Redirecting to <a href="https://allsecure.group/#contact">allsecure.group</a>…</p>
+  <p>Redirecting to <a id="go-link" href="https://allsecure.group/#contact">allsecure.group</a>…</p>
 </body>
 </html>
