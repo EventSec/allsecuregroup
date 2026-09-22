@@ -366,6 +366,102 @@
   if (typeof fetch !== "undefined" && window.location.protocol !== "file:") {
     load();
   }
+  initContactForm();
+
+  /* ---------- Contact form (StaticForms, JS-only) ---------- */
+  var SF_ENDPOINT = "https://api.staticforms.dev/submit";
+  var SF_API_KEY = "sf_3c7a5c92f7905822d583887f";
+
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    var submit = document.getElementById("cf-submit");
+    var status = document.getElementById("cf-status");
+    var startedAt = Date.now();
+    var busy = false;
+
+    function el(id) { return document.getElementById(id); }
+
+    function setStatus(msg, isError) {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = isError ? "cf-status is-error" : "cf-status";
+    }
+
+    function validate() {
+      var name = el("cf-name").value.trim();
+      var email = el("cf-email").value.trim();
+      var message = el("cf-message").value.trim();
+      if (!name) return "Please add your name.";
+      if (!email) return "Please add your email address.";
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "Please enter a valid email address.";
+      if (!message) return "Please add a message.";
+      return null;
+    }
+
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      if (busy) return;
+
+      // Honeypot: a filled hidden field means a bot. Pretend success, do nothing.
+      var honeypot = el("cf-honeypot");
+      if (honeypot && honeypot.value) {
+        setStatus("Thanks — your message has been sent.");
+        form.reset();
+        return;
+      }
+      // Time-gate: submissions faster than a human are bots.
+      if (Date.now() - startedAt < 2000) {
+        setStatus("Thanks — your message has been sent.");
+        form.reset();
+        return;
+      }
+
+      var err = validate();
+      if (err) { setStatus(err, true); return; }
+
+      var payload = {
+        apiKey: SF_API_KEY,
+        name: el("cf-name").value.trim(),
+        email: el("cf-email").value.trim(),
+        message: el("cf-message").value.trim()
+      };
+      var org = el("cf-org").value.trim();
+      if (org) payload.organization = org;
+
+      busy = true;
+      submit.disabled = true;
+      submit.textContent = "SENDING\u2026";
+      setStatus("");
+
+      fetch(SF_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(function (res) {
+        if (res.ok) {
+          setStatus("Thanks — your message has been sent. We'll be in touch.");
+          form.reset();
+          return;
+        }
+        var friendly = {
+          400: "The form couldn't be sent. Please check your details and try again.",
+          401: "The form isn't configured yet. Please try again later.",
+          403: "The form isn't accepting submissions right now.",
+          429: "Too many messages just now. Please try again in a minute."
+        };
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          setStatus(friendly[res.status] || (data && data.message) || "Something went wrong. Please try again.", true);
+        });
+      }).catch(function () {
+        setStatus("Something went wrong. Please try again.", true);
+      }).then(function () {
+        busy = false;
+        submit.disabled = false;
+        submit.textContent = "SEND";
+      });
+    });
+  }
 
   // Live-preview hook: the admin editor posts edited content here so the
   // preview iframe updates in real time without needing a server.

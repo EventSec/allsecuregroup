@@ -458,6 +458,81 @@ a { color: inherit; }
   flex: none;
 }
 
+/* ---------- Contact form (StaticForms, JS-only) ---------- */
+.contact-form {
+  flex: 0 0 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 24px;
+  width: 100%;
+  margin-top: 48px;
+}
+.cf-field { margin: 0; display: flex; flex-flow: column; gap: 8px; }
+.cf-field-full { grid-column: 1 / -1; }
+.cf-field label {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  line-height: 1em;
+  color: var(--white);
+}
+.cf-opt { color: var(--muted); letter-spacing: 0.08em; }
+.cf-field input,
+.cf-field textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ffffff24;
+  border-radius: 0;
+  color: var(--white);
+  font-family: "Areal Regular", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 8px 0;
+  outline: none;
+}
+.cf-field textarea { resize: vertical; min-height: 110px; }
+.cf-field input:focus,
+.cf-field textarea:focus { border-bottom-color: var(--accent); }
+.cf-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+.cf-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 18px;
+  margin: 6px 0 0;
+}
+.cf-submit {
+  background-color: var(--accent);
+  color: var(--white);
+  border: 0;
+  cursor: pointer;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  line-height: 1em;
+  padding: 14px 24px;
+  border-radius: 4px;
+}
+.cf-submit:disabled { opacity: 0.55; cursor: default; }
+.cf-status {
+  font-family: "Areal Regular", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.cf-status.is-error { color: #ff7a7a; }
+
 /* ---------- Footer ---------- */
 .site-footer {
   width: 100%;
@@ -505,6 +580,7 @@ a { color: inherit; }
   .custom-inner { grid-template-columns: 1fr; gap: 28px; }
   .contact-detail { align-items: flex-start; width: 100%; }
   .contact-copy { flex: none; width: 100%; }
+  .contact-form { grid-template-columns: 1fr; margin-top: 32px; }
   .txt-hero { font-size: 60px; }
   .txt-stat { font-size: 54px; }
   .txt-h2 { font-size: 40px; }
