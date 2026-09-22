@@ -1,0 +1,5 @@
+# https://datatracker.ietf.org/doc/html/rfc9116
+Contact: mailto:info@allsecure.group
+Expires: 2027-09-21T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://allsecure.group/.well-known/security.txt
