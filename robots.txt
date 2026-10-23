@@ -76,8 +76,11 @@ Disallow: /
 User-agent: Applebot-Extended
 Disallow: /
 
-# Block all other bots by default
+# Block all other bots by default.
+# The /assets/email/ exception keeps signature images fetchable by mail-gateway
+# image proxies (some corporate scanners honour robots.txt before loading images).
 User-agent: *
 Disallow: /
+Allow: /assets/email/
 
 Sitemap: https://allsecure.group/sitemap.xml
